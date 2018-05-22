@@ -18,5 +18,6 @@ const NinjaSchema = new Schema({
 })
 
 const Ninja = mongoose.model('ninja', NinjaSchema)
+//console.log(1)
 
 module.exports = Ninja

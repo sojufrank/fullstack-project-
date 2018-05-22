@@ -1,32 +1,33 @@
 const express = require('express')
 const router = express.Router()
+const Ninja = require('../models/ninjas')
 
 
 //get a list of ninjas from db
-router.get('/ninjas', function(req,res){
+router.get('/ninjas', function(req,res,next){
     console.log('received get request to /api/ninjas')
     res.send({type:'GET'})
 })
 
 //add a new ninja to db
-router.post('/ninjas', function(req,res){
-    console.log(req.body)
-    console.log('received POST request')
-    res.send({
-        type:'get',
-        name:req.body.name,
-        sex:req.body.sex,
-        data:req.body
-    })
+router.post('/ninjas', function(req,res,next){
+
+    Ninja.create(req.body)
+        .then(ninja => {
+            res.send(ninja)
+        })
+        .catch(next)
+        //.catch(err => res.send(err))
+        
 })
 
 //update a ninja in the db
-router.put('/ninjas/:id', function(req,res){
+router.put('/ninjas/:id', function(req,res,next){
     res.send({type:'PUT'})
 })
 
 //delete a ninja from the db
-router.delete('/ninjas/:id', function(req,res){
+router.delete('/ninjas/:id', function(req,res,next){
     res.send({type:'DELETE'})
 })
 
