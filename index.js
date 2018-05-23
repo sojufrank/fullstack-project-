@@ -1,18 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const routes = require('./routes/api')
 
-//const routes = require('./routes/api')
-
-// set up express app
 
 const app = express()
 
 //connect to mongodb
 
 mongoose.connect('mongodb://localhost/ninjago')
-//mongoose.Promise = global.Promise
-
 
 mongoose.connection.on('connected', function () {  
     console.log('Mongoose connected');
@@ -21,12 +17,11 @@ mongoose.connection.on('connected', function () {
 
 app.use(bodyParser.json())
 
-//app.use('/api',routes)
-app.use('/api',require('./routes/api'))
+app.use('/api', routes)
 
 //error handling middleware
 app.use(function(err,req,res,next){
-    console.log(err)
+
     res.status(422).send({error:err.errors.name.message})
 })
 
