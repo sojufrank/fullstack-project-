@@ -14,19 +14,18 @@ mongoose.connection.on('connected', function () {
     console.log('Mongoose connected');
   });
 
-
 app.use(bodyParser.json())
 
 app.use('/api', routes)
 
 //error handling middleware
-app.use(function(err,req,res,next){
+app.use((err,req,res,next) => {
 
     res.status(422).send({error:err.errors.name.message})
 })
 
 
-app.listen(3000, function(){
+app.listen(3000, () => {
     console.log('App started, now listening for requests')
 })
 
