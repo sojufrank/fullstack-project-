@@ -2,21 +2,31 @@ const express = require('express')
 const router = express.Router()
 const Ninja = require('../models/ninjas')
 
+
+router.get('/ninjas',(req,res) =>{
+    Ninja.find()
+        .then(ninja => {
+            res.send(ninja)
+        })
+    //res.send("hello world")
+})
+
+
+/*
 //read
 router.get('/ninjas',(req,res,next) => {
-    /*
+  
     Ninja.find().then(ninja => {
         res.send(ninja)
     })
-    */
-   /*
+
    Ninja.geoNear(
        {type:'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
        {maxDistance: 100000, spherical:true}
    ).then(ninjas => {
        res.send(ninjas)
    })
-   */
+  
 
   Ninja.aggregate().near({
     near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
@@ -56,5 +66,6 @@ router.delete('/ninjas/:id',(req,res,next) => {
             res.send(ninja)
         })
 })
+*/
 
 module.exports = router

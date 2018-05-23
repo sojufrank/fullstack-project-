@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 // create ninja Schema and model
-/*
+
 const GeoSchema = new Schema({
     type:{
         type:String,
@@ -12,7 +12,7 @@ const GeoSchema = new Schema({
         index:"2dsphere"
     }
 })
-*/
+
 
 const NinjaSchema = new Schema({
     name:{
@@ -25,8 +25,8 @@ const NinjaSchema = new Schema({
     available:{
         type: Boolean,
         default:false
-    }
-    //,geometry: GeoSchema
+    },
+    geometry: GeoSchema
 })
 
 const Ninja = mongoose.model('ninja', NinjaSchema)

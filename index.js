@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const routes = require('./routes/api')
+const routes2 = require('./routes/api2')
+
 
 
 const app = express()
@@ -10,13 +12,16 @@ const app = express()
 
 mongoose.connect('mongodb://localhost/ninjago')
 
-mongoose.connection.on('connected', function () {  
+mongoose.connection.on('connected', () => {  
     console.log('Mongoose connected');
   });
+
+app.use(express.static('public'))
 
 app.use(bodyParser.json())
 
 app.use('/api', routes)
+app.use('/api2', routes2)
 
 //error handling middleware
 app.use((err,req,res,next) => {
