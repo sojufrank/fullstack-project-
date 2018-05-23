@@ -22,7 +22,7 @@
 <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 
 <script>
-    const url = `http://localhost:3000/api/ninjas`
+    const url = `http://localhost:3000/girls`
 
     const elem = document.querySelector('.get')
     elem.addEventListener('click', (e) => {
@@ -34,7 +34,7 @@
 
                 div.innerHTML = data.map(item => {
                     console.log(item.name)
-                    return `<div>${item.name}</div>`
+                    return `<div>Name: ${item.name} ID: ${item._id}</div>`
                 }).join('')
             })
     })

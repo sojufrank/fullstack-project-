@@ -1,7 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const routes = require('./routes/api')
+//const routes = require('./routes/api')
+const girlsRoutes = require('./routes/girls')
 const db = require('./config/db')
 
 
@@ -21,7 +22,8 @@ app.use(express.static('public'))
 
 app.use(bodyParser.json())
 
-app.use('/api', routes)
+//app.use('/api', routes)
+app.use('/', girlsRoutes)
 
 //error handling middleware
 app.use((err, req, res, next) => {
@@ -32,6 +34,6 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(3000, () => {
+app.listen(process.env.port || 3000, () => {
     console.log('App started, now listening for requests')
 })
