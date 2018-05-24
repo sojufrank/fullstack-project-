@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 //const routes = require('./routes/api')
 const girlsRoutes = require('./routes/girls')
-const db = require('./config/db')
+//const db = require('./config/db')
+const db = require('./db')
 
 
 
