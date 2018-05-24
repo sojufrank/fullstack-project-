@@ -33,10 +33,9 @@ app.use((err, req, res, next) => {
     })
 })
 
-const serverPort = 8080;
+const serverPort = 3000;
 const port = process.env.PORT || serverPort;
 
 app.listen(port, () => {
-    var port = server.address().port;
     console.log('App started, now listening for requests')
 })
