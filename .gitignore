@@ -1,4 +1,2 @@
-/config/*
 /config/db.js
-./config/*
 ./config/db.js
